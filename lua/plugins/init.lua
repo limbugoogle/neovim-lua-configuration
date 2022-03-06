@@ -8,4 +8,7 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   -- If you are using Packer
   use 'shaunsingh/nord.nvim'
+
+  use {'nvim-treesitter/nvim-treesitter', run =  ":TSUpdate"}
+
 end)
