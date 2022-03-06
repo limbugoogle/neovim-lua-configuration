@@ -24,4 +24,5 @@ return require('packer').startup(function()
       }
   }
 
+  use {'folke/which-key.nvim'}
 end)
