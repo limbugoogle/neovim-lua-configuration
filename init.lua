@@ -10,4 +10,5 @@ require("telescope-config")
 require("treesitter-config")
 require("autopairs-config")
 require("lsp")
+require("colorizer-config")
 vim.cmd[[colorscheme nord]]

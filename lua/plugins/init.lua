@@ -62,4 +62,5 @@ return require('packer').startup(function()
       'neovim/nvim-lspconfig',
       'williamboman/nvim-lsp-installer',
   }
+  use 'norcalli/nvim-colorizer.lua'
 end)
