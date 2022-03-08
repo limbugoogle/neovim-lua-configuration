@@ -9,5 +9,5 @@ require("whichkey-config")
 require("telescope-config")
 require("treesitter-config")
 require("autopairs-config")
-require("cmp-config")
+require("lsp")
 vim.cmd[[colorscheme nord]]
