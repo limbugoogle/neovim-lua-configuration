@@ -81,5 +81,6 @@ return require('packer').startup(function()
       require('gitsigns').setup()
     end
   }
+  use 'lukas-reineke/indent-blankline.nvim'
   -- tag = 'release' -- To use the latest release
 end)
