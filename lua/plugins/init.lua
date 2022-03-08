@@ -82,5 +82,7 @@ return require('packer').startup(function()
     end
   }
   use 'lukas-reineke/indent-blankline.nvim'
-  -- tag = 'release' -- To use the latest release
+
+  use 'terrortylor/nvim-comment'
+
 end)

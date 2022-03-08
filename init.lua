@@ -12,4 +12,5 @@ require("autopairs-config")
 require("lsp")
 require("colorizer-config")
 require("blankline-config")
+require("comment-config")
 --vim.cmd[[colorscheme nord]]
