@@ -36,5 +36,5 @@ vim.bo.expandtab = true
 vim.opt.termguicolors = true
 vim.opt.swapfile = false
 vim.opt.smartcase = true
-vim.opt.smartident= true
+vim.opt.smartindent= true
 
