@@ -11,4 +11,4 @@ require("treesitter-config")
 require("autopairs-config")
 require("lsp")
 require("colorizer-config")
-vim.cmd[[colorscheme nord]]
+--vim.cmd[[colorscheme nord]]

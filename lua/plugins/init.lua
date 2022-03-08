@@ -6,7 +6,17 @@ return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   -- If you are using Packer
-  use 'shaunsingh/nord.nvim'
+  
+  --use 'shaunsingh/nord.nvim'
+  
+  use({
+      'rose-pine/neovim',
+      as = 'rose-pine',
+      tag = 'v1.*',
+      config = function()
+          vim.cmd('colorscheme rose-pine')
+      end
+  })
 
   use {'nvim-treesitter/nvim-treesitter', run =  ":TSUpdate"}
 
@@ -35,7 +45,6 @@ return require('packer').startup(function()
  use {'p00f/nvim-ts-rainbow'}
  use {'windwp/nvim-autopairs'}
 
-  use 'neovim/nvim-lspconfig'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
@@ -63,4 +72,15 @@ return require('packer').startup(function()
       'williamboman/nvim-lsp-installer',
   }
   use 'norcalli/nvim-colorizer.lua'
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
+  -- tag = 'release' -- To use the latest release
 end)
