@@ -17,4 +17,3 @@ map("n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)
     {noremap = true, silent = true})
 map("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>",
     {noremap = true, silent = true})
-

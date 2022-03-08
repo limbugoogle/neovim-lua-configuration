@@ -7,4 +7,6 @@ require("bufferline-config")
 --Lua:
 require("whichkey-config")
 require("telescope-config")
+require("treesitter-config")
+require("autopairs-config")
 vim.cmd[[colorscheme nord]]

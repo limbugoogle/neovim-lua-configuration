@@ -2,7 +2,6 @@
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
-
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -31,4 +30,8 @@ return require('packer').startup(function()
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+ use {'windwp/nvim-ts-autotag'}
+
+ use {'p00f/nvim-ts-rainbow'}
+ use {'windwp/nvim-autopairs'}
 end)
