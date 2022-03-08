@@ -58,5 +58,8 @@ return require('packer').startup(function()
 -- Plug 'dcampos/nvim-snippy'
 -- Plug 'dcampos/cmp-snippy'
   use 'onsails/lspkind-nvim'
-
+  use {
+      'neovim/nvim-lspconfig',
+      'williamboman/nvim-lsp-installer',
+  }
 end)
