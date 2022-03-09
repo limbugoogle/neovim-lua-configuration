@@ -82,18 +82,14 @@ return require('packer').startup(function(use)
 
   use {'norcalli/nvim-colorizer.lua', config = "require('colorizer-config')", event = "BufRead"}
 
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
-    config = function()
-      require('gitsigns').setup()
-    end
-  }
+  use'nvim-lua/plenary.nvim'
+
+  use {'lewis6991/gitsigns.nvim', config = "require('gitsigns-config')"}
+
   use {"lukas-reineke/indent-blankline.nvim",
   config = "require('blankline-config')",
   event = "BufRead"
   }
   use {"terrortylor/nvim-comment", config = "require('comment-config')"}
+
 end)
