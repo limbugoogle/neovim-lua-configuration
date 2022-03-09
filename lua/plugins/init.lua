@@ -90,6 +90,9 @@ return require('packer').startup(function(use)
   config = "require('blankline-config')",
   event = "BufRead"
   }
+
   use {"terrortylor/nvim-comment", config = "require('comment-config')"}
+
+  use {'jose-elias-alvarez/null-ls.nvim', config = "require('null-ls-config')"}
 
 end)
