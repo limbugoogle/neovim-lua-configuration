@@ -1,13 +1,8 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
-return require('packer').startup(function()
-  -- Packer can manage itself
+return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  -- If you are using Packer
-  
-  --use 'shaunsingh/nord.nvim'
-  
   use({
       'rose-pine/neovim',
       as = 'rose-pine',
@@ -16,34 +11,52 @@ return require('packer').startup(function()
           vim.cmd('colorscheme rose-pine')
       end
   })
-
-  use {'nvim-treesitter/nvim-treesitter', run =  ":TSUpdate"}
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    cmd = "NvimTreeToggle",
+    config = "require('nvim-tree-config')"
+  }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ":TSUpdate",
+    event = "BufWinEnter",
+    config = "require('treesitter-config')"
+  }
 
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
-  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
-
-  use {
-      'kyazdani42/nvim-tree.lua',
-      requires = {
-        'kyazdani42/nvim-web-devicons', -- optional, for file icon
-      }
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    event = "BufWinEnter",
+    config = "require('lualine-config')"
   }
 
-  use {'folke/which-key.nvim'}
+  use {'akinsho/bufferline.nvim',
+  requires = 'kyazdani42/nvim-web-devicons',
+  event = "BufWinEnter",
+  config = "require('bufferline-config')"
+  }
 
+   use {'windwp/nvim-ts-autotag',
+        event = "InsertEnter",
+      after = "nvim-treesitter"}
+
+  use {'p00f/nvim-ts-rainbow', after = "nvim-treesitter"}
+  use {'windwp/nvim-autopairs', config = "require('autopairs-config')", after = "nvim-cmp"}
+
+  use {'folke/which-key.nvim', event = "BufWinEnter", config = "require('whichkey-config')"}
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { {'nvim-lua/plenary.nvim'} },
+    cmd = "Telescope",
+    config = "require('telescope-config')"
   }
 
- use {'windwp/nvim-ts-autotag'}
-
- use {'p00f/nvim-ts-rainbow'}
- use {'windwp/nvim-autopairs'}
-
+  use {
+      'neovim/nvim-lspconfig',
+      config = "require('lsp')"
+  }
+  use {'williamboman/nvim-lsp-installer'}
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
@@ -66,11 +79,8 @@ return require('packer').startup(function()
 -- Plug 'dcampos/nvim-snippy'
 -- Plug 'dcampos/cmp-snippy'
   use 'onsails/lspkind-nvim'
-  use {
-      'neovim/nvim-lspconfig',
-      'williamboman/nvim-lsp-installer',
-  }
-  use 'norcalli/nvim-colorizer.lua'
+
+  use {'norcalli/nvim-colorizer.lua', config = "require('colorizer-config')", event = "BufRead"}
 
   use {
     'lewis6991/gitsigns.nvim',
@@ -81,8 +91,9 @@ return require('packer').startup(function()
       require('gitsigns').setup()
     end
   }
-  use 'lukas-reineke/indent-blankline.nvim'
-
-  use 'terrortylor/nvim-comment'
-
+  use {"lukas-reineke/indent-blankline.nvim",
+  config = "require('blankline-config')",
+  event = "BufRead"
+  }
+  use {"terrortylor/nvim-comment", config = "require('comment-config')"}
 end)
