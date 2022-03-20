@@ -3,14 +3,22 @@
 vim.cmd([[packadd packer.nvim]])
 return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
+	-- use({
+	-- 	"rose-pine/neovim",
+	-- 	as = "rose-pine",
+	-- 	tag = "v1.*",
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme rose-pine")
+	-- 	end,
+	-- })
+	--
 	use({
-		"rose-pine/neovim",
-		as = "rose-pine",
-		tag = "v1.*",
+		"EdenEast/nightfox.nvim",
 		config = function()
-			vim.cmd("colorscheme rose-pine")
+			vim.cmd("colorscheme duskfox")
 		end,
 	})
+
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = "kyazdani42/nvim-web-devicons",
@@ -90,4 +98,19 @@ return require("packer").startup(function(use)
 	use({ "terrortylor/nvim-comment", config = "require('comment-config')" })
 
 	use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
+
+	use({ "akinsho/toggleterm.nvim", config = "require('toggleterm-config')" })
+
+	use({
+		"vimwiki/vimwiki",
+		config = function()
+			vim.g.vimwiki_list = {
+				{
+					path = "/home/limbugoogle/Documents/Notes",
+					syntax = "markdown",
+					ext = ".md",
+				},
+			}
+		end,
+	})
 end)

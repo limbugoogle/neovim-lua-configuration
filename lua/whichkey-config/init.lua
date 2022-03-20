@@ -1,12 +1,27 @@
 local wk = require("which-key")
 
+local Terminal = require("toggleterm.terminal").Terminal
+local toggle_float = function()
+	local float = Terminal:new({ direction = "float" })
+	return float:toggle()
+end
+local toggle_lazygit = function()
+	local lazygit = Terminal:new({ cmd = "lazygit", direction = "float" })
+	return lazygit:toggle()
+end
+
 local mappings = {
 	x = { ":bdelete<cr>", "Close" },
 	E = { ":e ~/.config/nvim/init.lua<cr>", "Edit config" },
 	f = { ":Telescope find_files<cr>", "Telescope Find Files" },
 	r = { ":Telescope live_grep<cr>", "Telescope Live Grep" },
 	b = { ":Telescope buffers<cr>", "Telescope buffers" },
-	t = { ":Telescope help_tags<cr>", "Telescope Help Tags" },
+	h = { ":Telescope help_tags<cr>", "Telescope Help Tags" },
+	t = {
+		t = { ":ToggleTerm<cr>", "Split Below" },
+		f = { toggle_float, "Floating Terminal" },
+		l = { toggle_lazygit, "LazyGit" },
+	},
 	l = {
 		name = "LSP",
 		i = { ":LspInfo<cr>", "Connected Language Servers" },

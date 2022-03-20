@@ -5,10 +5,11 @@ local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup({
 	sources = {
+		-- formatting.uncrustify,
 		diagnostics.pylint,
 		formatting.stylua,
 		formatting.prettier,
-		formatting.black,
+		-- formatting.black,
 		formatting.gofmt,
 		formatting.shfmt,
 		formatting.clang_format,
@@ -23,17 +24,18 @@ null_ls.setup({
 				"--indent-width=2",
 			},
 		}),
-		formatting.isort,
-		formatting.codespell.with({ filetypes = { "markdown" } }),
+		-- formatting.isort,
 	},
 	on_attach = function(client)
 		if client.resolved_capabilities.document_formatting then
 			vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
 		end
+		if client.resolved_capabilities.document_highlight then
+			vim.cmd("autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()")
+		end
 		vim.cmd([[
       augroup document_highlight
         autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
     ]])
