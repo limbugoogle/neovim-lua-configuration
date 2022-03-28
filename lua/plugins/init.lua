@@ -12,12 +12,27 @@ return require("packer").startup(function(use)
 	-- 	end,
 	-- })
 	--
+	-- use({
+	-- 	"EdenEast/nightfox.nvim",
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme duskfox")
+	-- 		-- vim.cmd("colorscheme dawnfox")
+	-- 	end,
+	-- })
+
 	use({
-		"EdenEast/nightfox.nvim",
+		"folke/tokyonight.nvim",
 		config = function()
-			vim.cmd("colorscheme duskfox")
+			vim.cmd("colorscheme tokyonight")
 		end,
 	})
+
+	-- use({
+	-- 	"bluz71/vim-moonfly-colors",
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme moonfly")
+	-- 	end,
+	-- })
 
 	use({
 		"kyazdani42/nvim-tree.lua",
@@ -106,7 +121,7 @@ return require("packer").startup(function(use)
 		config = function()
 			vim.g.vimwiki_list = {
 				{
-					path = "/home/limbugoogle/Documents/Notes",
+					path = "/home/limbugoogle/MyRepository/Notes",
 					syntax = "markdown",
 					ext = ".md",
 				},

@@ -28,7 +28,15 @@ null_ls.setup({
 	},
 	on_attach = function(client)
 		if client.resolved_capabilities.document_formatting then
-			vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+			client.resolved_capabilities.document_formatting = false
+			client.resolved_capabilities.document_range_formatting = false
+			-- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+			vim.cmd([[
+                augroup LspFormatting
+                    autocmd! * <buffer>
+                    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+                augroup END
+                ]])
 		end
 		if client.resolved_capabilities.document_highlight then
 			vim.cmd("autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()")
