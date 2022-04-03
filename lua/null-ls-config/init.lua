@@ -28,9 +28,9 @@ null_ls.setup({
 	},
 	on_attach = function(client)
 		if client.resolved_capabilities.document_formatting then
-			client.resolved_capabilities.document_formatting = false
-			client.resolved_capabilities.document_range_formatting = false
-			-- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+			-- client.resolved_capabilities.document_formatting = false
+			-- client.resolved_capabilities.document_range_formatting = false
+			vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
 			vim.cmd([[
                 augroup LspFormatting
                     autocmd! * <buffer>

@@ -89,6 +89,8 @@ return require("packer").startup(function(use)
 	use("hrsh7th/cmp-vsnip")
 	use("hrsh7th/vim-vsnip")
 
+	use({ "MunifTanjim/eslint.nvim", config = "require('eslint-config')" })
+
 	-- For luasnip users.
 	-- Plug 'L3MON4D3/LuaSnip'
 	-- Plug 'saadparwaiz1/cmp_luasnip'
